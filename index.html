@@ -12,8 +12,7 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background: #0f172a;
-      /* simple dark background */
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
@@ -22,7 +21,7 @@
     .glass {
       backdrop-filter: blur(14px);
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 1.5rem;
       box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -30,7 +29,7 @@
 
     .glass:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
     }
 
     .float {
@@ -38,7 +37,6 @@
     }
 
     @keyframes floatY {
-
       0%,
       100% {
         transform: translateY(0);
@@ -53,6 +51,19 @@
     h2 {
       font-family: 'Playfair Display', serif;
     }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(90deg, #ff6ec7, #fddb92, #7b61ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Glow effect for countdown */
+    .glow {
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.4),
+        0 0 20px rgba(123, 97, 255, 0.6);
+    }
   </style>
 </head>
 
@@ -61,15 +72,15 @@
   <!-- Header -->
   <header class="w-full max-w-3xl mx-auto mt-12 mb-6 text-center fade-in">
     <h1 class="text-6xl sm:text-7xl font-extrabold tracking-tight mb-3 float">
-      <span class="text-gray-200">Sudh</span><span class="text-gray-50">Art</span><span class="text-gray-400">.in</span>
+      <span class="gradient-text">SudhArt.in</span>
     </h1>
 
-    <h2 class="text-3xl sm:text-4xl font-bold text-gray-200 mb-3">Coming Soon</h2>
-    <p class="text-lg sm:text-xl text-gray-400 font-semibold mb-4">
-      🚀 Launching on <span class="text-gray-100">15th September 2025</span>
+    <h2 class="text-3xl sm:text-4xl font-bold mb-3 gradient-text">Coming Soon</h2>
+    <p class="text-lg sm:text-xl text-gray-300 font-semibold mb-4">
+      🚀 Launching on <span class="gradient-text">15th September 2025</span>
     </p>
-    <p class="text-lg sm:text-2xl text-gray-300 font-medium">
-      Portrait Sketches by <span class="font-bold text-white">Sudhanshu Shukla</span>
+    <p class="text-lg sm:text-2xl text-gray-200 font-medium">
+      Portrait Sketches by <span class="font-bold gradient-text">Sudhanshu Shukla</span>
     </p>
     <p class="text-base sm:text-lg text-gray-400 mt-3">
       Handmade portraits & divine sketches of Ganesha, Krishna, Radha, and more.
@@ -78,19 +89,19 @@
     <!-- Countdown Timer -->
     <div id="countdown" class="mt-6 flex justify-center gap-6 text-center text-gray-100">
       <div>
-        <p id="days" class="text-4xl font-bold">00</p>
+        <p id="days" class="text-4xl font-bold glow">00</p>
         <span class="text-sm text-gray-400">Days</span>
       </div>
       <div>
-        <p id="hours" class="text-4xl font-bold">00</p>
+        <p id="hours" class="text-4xl font-bold glow">00</p>
         <span class="text-sm text-gray-400">Hours</span>
       </div>
       <div>
-        <p id="minutes" class="text-4xl font-bold">00</p>
+        <p id="minutes" class="text-4xl font-bold glow">00</p>
         <span class="text-sm text-gray-400">Minutes</span>
       </div>
       <div>
-        <p id="seconds" class="text-4xl font-bold">00</p>
+        <p id="seconds" class="text-4xl font-bold glow">00</p>
         <span class="text-sm text-gray-400">Seconds</span>
       </div>
     </div>
@@ -98,38 +109,37 @@
 
   <!-- What I Offer -->
   <section class="max-w-3xl w-full glass p-8 sm:p-10 space-y-6 mb-10">
-    <h2 class="text-3xl font-bold text-gray-100 mb-4">What I Offer</h2>
+    <h2 class="text-3xl font-bold gradient-text mb-4">What I Offer</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
-      <div class="bg-gray-800/40 p-6 rounded-2xl border border-gray-700/50">
-        <h3 class="text-lg font-bold text-gray-200 mb-2">Portraits from Your Photos</h3>
-        <p class="text-gray-400 text-sm">
+      <div class="bg-gradient-to-tr from-purple-800/30 to-indigo-800/30 p-6 rounded-2xl border border-gray-700/50">
+        <h3 class="text-lg font-bold text-gray-100 mb-2">Portraits from Your Photos</h3>
+        <p class="text-gray-300 text-sm">
           Send me your favorite photo and I’ll turn it into a timeless hand-drawn sketch.
         </p>
       </div>
-      <div class="bg-gray-800/40 p-6 rounded-2xl border border-gray-700/50">
-        <h3 class="text-lg font-bold text-gray-200 mb-2">Divine Artworks</h3>
-        <p class="text-gray-400 text-sm">
+      <div class="bg-gradient-to-tr from-pink-800/30 to-yellow-700/30 p-6 rounded-2xl border border-gray-700/50">
+        <h3 class="text-lg font-bold text-gray-100 mb-2">Divine Artworks</h3>
+        <p class="text-gray-300 text-sm">
           Sketches of gods like Ganesha, Krishna, Radha, Shiva & more. Custom divine portraits available.
         </p>
       </div>
     </div>
     <div class="text-center mt-6">
-      <span class="text-gray-200 font-semibold text-lg">✨ Starting at ₹499 only</span>
+      <span class="gradient-text font-semibold text-lg">✨ Starting at ₹499 only</span>
     </div>
   </section>
 
   <!-- Contact -->
-  <!-- Contact -->
   <section class="max-w-3xl w-full glass p-8 sm:p-10 mb-12 text-center">
-    <h2 class="text-3xl font-bold text-gray-100 mb-3">Contact & Commission</h2>
-    <p class="text-gray-400 text-base mb-5">
+    <h2 class="text-3xl font-bold gradient-text mb-3">Contact & Commission</h2>
+    <p class="text-gray-300 text-base mb-5">
       Want a custom portrait or divine sketch? <br>
       Connect with me on WhatsApp or Instagram below 👇
     </p>
 
     <!-- WhatsApp -->
     <a href="https://wa.me/919106725156?text=Hi%20Sudhanshu%2C%20I%20want%20to%20get%20a%20sketch%20made%20for%20myself."
-      class="inline-block bg-gray-200 text-black font-semibold py-3 px-10 rounded-full shadow-md hover:bg-gray-300 transition text-lg tracking-wide mb-4">
+      class="inline-block bg-green-500 text-white font-semibold py-3 px-10 rounded-full shadow-md hover:bg-green-600 transition text-lg tracking-wide mb-4">
       📩 Connect on WhatsApp
     </a>
     <br>
@@ -140,14 +150,13 @@
       📷 Follow on Instagram
     </a>
 
-    <p class="text-xs text-gray-500 mt-4">
+    <p class="text-xs text-gray-400 mt-4">
       Or email: <span class="underline">shshukla1204@gmail.com</span>
     </p>
   </section>
 
-
   <!-- Footer -->
-  <footer class="w-full max-w-3xl mx-auto text-center text-gray-600 text-xs pb-6">
+  <footer class="w-full max-w-3xl mx-auto text-center text-gray-500 text-xs pb-6">
     &copy; 2025 Sudhanshu Shukla | SudhArt.in
   </footer>
 
