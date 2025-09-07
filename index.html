@@ -3,105 +3,136 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SudhArt | Coming Soon</title>
+  <title>SudhArt | Portrait Sketches by Sudhanshu Shukla</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
     body {
+      font-family: 'Inter', sans-serif;
       background: radial-gradient(circle at top left, #1e293b, #0f172a);
       min-height: 100vh;
-      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
       overflow-x: hidden;
+      position: relative;
     }
+
+    /* Animated gradient background */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(236,72,153,0.2), rgba(250,204,21,0.15), rgba(34,197,94,0.2));
+      background-size: 400% 400%;
+      animation: gradientShift 18s ease infinite;
+      z-index: -1;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     .glass {
-      backdrop-filter: blur(20px);
+      backdrop-filter: blur(18px);
       background: rgba(255, 255, 255, 0.06);
-      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 1.5rem;
       box-shadow: 0 8px 32px rgba(0,0,0,0.4);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
     .glass:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
       box-shadow: 0 12px 48px rgba(0,0,0,0.55);
     }
-    .fade-in {
-      animation: fadeIn 1.2s cubic-bezier(.39,.575,.565,1) both;
+
+    /* Floating title animation */
+    .float {
+      animation: floatY 6s ease-in-out infinite;
     }
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(40px) scale(0.95);}
-      100% { opacity: 1; transform: translateY(0) scale(1);}
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
-    .floating-art {
-      position: absolute;
-      z-index: 0;
-      opacity: 0.12;
-      pointer-events: none;
-      animation: floatArt 7s ease-in-out infinite alternate;
-      filter: blur(2px);
+
+    /* Glow on hover */
+    .glow:hover {
+      box-shadow: 0 0 20px rgba(250,204,21,0.5), 0 0 40px rgba(236,72,153,0.4);
     }
-    @keyframes floatArt {
-      0% { transform: translateY(0) rotate(0deg) scale(1);}
-      100% { transform: translateY(-30px) rotate(8deg) scale(1.05);}
+
+    /* Gallery images */
+    .gallery-img {
+      object-fit: cover;
+      border-radius: 1rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      border: 2px solid #fbbf24;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .gallery-img:hover {
+      transform: scale(1.06);
+      border-color: #ec4899;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
     }
   </style>
 </head>
-<body class="flex items-center justify-center min-h-screen px-2 sm:px-4 text-white relative">
+<body class="flex flex-col items-center justify-center px-4 text-white">
 
-  <!-- Background floating decorative elements -->
-  <svg class="floating-art left-[-70px] top-[12%] w-44 h-44 hidden sm:block" viewBox="0 0 100 100">
-    <circle cx="50" cy="50" r="45" fill="url(#grad1)" />
-    <defs>
-      <radialGradient id="grad1">
-        <stop offset="0%" stop-color="#fbbf24"/>
-        <stop offset="100%" stop-color="#ec4899"/>
-      </radialGradient>
-    </defs>
-  </svg>
-  <svg class="floating-art right-[-60px] bottom-[15%] w-36 h-36 hidden sm:block" viewBox="0 0 100 100">
-    <circle cx="50" cy="50" r="40" fill="url(#grad2)" />
-    <defs>
-      <radialGradient id="grad2">
-        <stop offset="0%" stop-color="#34d399"/>
-        <stop offset="100%" stop-color="#3b82f6"/>
-      </radialGradient>
-    </defs>
-  </svg>
-
-  <!-- Main Card -->
-  <div class="max-w-2xl w-full text-center glass rounded-3xl p-6 sm:p-10 shadow-2xl space-y-6 sm:space-y-8 fade-in relative z-10">
-
-    <!-- Title -->
-    <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-orange-400 to-pink-500 drop-shadow-2xl mb-3">
+  <!-- Header -->
+  <header class="w-full max-w-3xl mx-auto mt-12 mb-6 text-center fade-in">
+    <h1 class="text-6xl sm:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-orange-400 to-pink-500 drop-shadow-2xl mb-3 float">
       SudhArt.in
     </h1>
-
-    <!-- Subtitle -->
-    <p class="text-base sm:text-xl md:text-2xl text-gray-200 leading-relaxed font-medium">
-      I’m <span class="font-bold text-white">Sudhanshu Shukla</span>, a sketch artist.<br>
-      I create <span class="text-yellow-300 font-semibold">handmade portraits</span> from your photographs —<br>
-      from <span class="italic text-pink-300">personal sketches</span> to <span class="italic text-orange-300">divine art</span>.
+    <h2 class="text-3xl sm:text-4xl font-bold text-pink-400 mb-3">Coming Soon</h2>
+    <p class="text-lg sm:text-2xl text-gray-200 font-medium">
+      Portrait Sketches by <span class="font-bold text-white">Sudhanshu Shukla</span>
     </p>
+    <p class="text-base sm:text-lg text-gray-400 mt-3">
+      Handmade <span class="text-yellow-300 font-semibold">portraits</span> & divine sketches of
+      <span class="italic text-pink-300">Ganesha</span>, <span class="italic text-orange-300">Krishna</span>, 
+      <span class="italic text-blue-300">Radha</span>, and more.
+    </p>
+  </header>
 
-    <!-- Coming soon -->
-    <div class="bg-gradient-to-r from-gray-900/90 via-gray-800/80 to-gray-900/90 p-5 rounded-2xl shadow-inner border border-gray-700/70">
-      <p class="text-yellow-300 text-lg sm:text-xl font-bold tracking-wide">🎨 Portfolio Coming Soon</p>
-      <p class="text-sm sm:text-base text-gray-400 mt-1">Stay tuned to explore my collection of artworks.</p>
+  <!-- What I Offer -->
+  <section class="max-w-3xl w-full glass p-8 sm:p-10 shadow-2xl space-y-6 fade-in mb-10">
+    <h2 class="text-3xl font-bold text-yellow-300 mb-4">What I Offer</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
+      <div class="bg-gradient-to-r from-gray-900/80 via-gray-800/70 to-gray-900/80 p-6 rounded-2xl border border-gray-700/70">
+        <h3 class="text-lg font-bold text-pink-400 mb-2">Portraits from Your Photos</h3>
+        <p class="text-gray-200 text-sm">
+          Send me your favorite photo and I’ll turn it into a beautiful hand-drawn sketch. Perfect for gifts, memories, or decor.
+        </p>
+      </div>
+      <div class="bg-gradient-to-r from-yellow-50/20 via-pink-50/10 to-yellow-50/20 p-6 rounded-2xl border border-yellow-500/40">
+        <h3 class="text-lg font-bold text-yellow-300 mb-2">Divine Artworks</h3>
+        <p class="text-gray-200 text-sm">
+          Sketches of gods like Ganesha, Krishna, Radha, Shiva & more. Custom divine portraits available on request.
+        </p>
+      </div>
     </div>
-
-    <!-- Commission Info -->
-    <div class="bg-gradient-to-r from-yellow-50/20 via-pink-50/10 to-yellow-50/20 p-5 rounded-2xl shadow-inner border border-yellow-500/40">
-      <p class="text-yellow-300 text-lg sm:text-xl font-bold">✨ Commission Your Artwork</p>
-      <p class="text-gray-200 text-sm sm:text-base leading-relaxed mt-1">
-        Request <span class="font-semibold">custom portrait commissions</span> made just for you.<br>
-        Pricing starts from <span class="text-green-400 font-extrabold">₹499 only</span>.
-      </p>
+    <div class="text-center mt-6">
+      <span class="text-green-400 font-extrabold text-xl">✨ Starting at ₹499 only</span>
     </div>
+  </section>
 
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/919106725156" 
-       class="inline-block w-full sm:w-auto bg-gradient-to-r from-green-500 via-emerald-400 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white font-bold py-3 sm:py-4 px-8 sm:px-12 rounded-full shadow-xl transition transform hover:scale-105 hover:shadow-2xl text-lg tracking-wide mt-2">
+  <!-- Contact -->
+  <section class="max-w-3xl w-full glass p-8 sm:p-10 shadow-2xl fade-in mb-12 text-center">
+    <h2 class="text-3xl font-bold text-green-400 mb-3">Contact & Commission</h2>
+    <p class="text-gray-200 text-base mb-5">
+      Want a custom portrait or divine sketch? <br>
+      Connect with me on WhatsApp below 👇
+    </p>
+    <a href="https://wa.me/919106725156?text=Hi%20Sudhanshu%2C%20I%20want%20to%20get%20a%20sketch%20made%20for%20myself."
+       class="inline-block glow bg-gradient-to-r from-green-500 via-emerald-400 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white font-bold py-4 px-12 rounded-full shadow-xl transition transform hover:scale-105 hover:shadow-2xl text-lg tracking-wide">
       📩 Connect on WhatsApp
     </a>
-  </div>
+    <p class="text-xs text-gray-400 mt-4">Or email: <span class="underline">shshukla1204@gmail.com</span></p>
+  </section>
 
+  <!-- Footer -->
+  <footer class="w-full max-w-3xl mx-auto text-center text-gray-500 text-xs pb-6">
+    &copy; 2025 Sudhanshu Shukla | SudhArt.in
+  </footer>
 </body>
 </html>
